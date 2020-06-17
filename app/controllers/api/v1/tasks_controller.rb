@@ -35,6 +35,16 @@ class Api::V1::TasksController < ApplicationController
         @task = Task.find_by(id: params[:id])
     end
 
+    def update
+        @task.update(task_params)
+    end
+
+    def destroy
+        @task.destroy
+        render json: { message: 'Task was deleted.'}
+    end
+    
+
 private 
 
 def task_params 
