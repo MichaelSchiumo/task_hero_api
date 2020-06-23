@@ -6,8 +6,10 @@ Rails.application.routes.draw do
       resources :registrations, only: [:create]
       resources :users, only: [:create, :show, :index, :update, :destroy]
       resources :tasks, only: [:create, :show, :index, :update, :destroy]
-      post '/login', to: 'auth#create'
-      get '/profile', to: 'users#profile'
+      delete :logout, to: "sessions#logout"
+      get :logged_in, to: "sessions#logged_in"
+      # post '/login', to: 'auth#create'
+      # get '/profile', to: 'users#profile'
     end
   end
 end
